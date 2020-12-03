@@ -1,0 +1,454 @@
+4.02 series
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bug Fixes / Enhancements - 4.02 rc6
+---------------------------------------------------------------
+
+1. log support in b2ba execute native api
+2. dtls transport fix - when we copy data to gnutls buffer, if we have more data then it was corrupting the memory around stack
+3. supporting media-check
+4. memory leak fix in json proxy
+5. in tcm graph we use any ip to support filegraphs working fine in azure and amazon environments
+
+
+Bug Fixes / Enhancements - 4.02 rc5
+---------------------------------------------------------------
+1. invite rtx issue,that makes invite processed twice
+2. error from plugin -> tcm -> sibling -> multiplier -> controller is removed
+3. while creating remote txparams, size was smaller (for malloc) if host name is fqdn, size increaed according to fqdn size
+4. tls transport, attempting to send data again in block send case it buffer size is bigger
+5. osip log files are created in m-log folder instead of current folder
+6. mcurl file graphs supported
+7. filegraph data is shown in front end
+8. mapat /fsip shows actual curl error to user
+9. showing test suite name in error report
+10. log support in b2ba sip / pat / http
+11. osip-log support in b2ba sip
+
+Bug Fixes / Enhancements - 4.02 rc4
+---------------------------------------------------------------
+1. fsip file graphs supported
+2. execute support in b2ba native block
+3. test template / suite / bed data save loss fix (transaction rollback)
+4. user guide updated for item 1 and 2
+
+Bug Fixes / Enhancements - 4.02 rc3
+---------------------------------------------------------------
+
+1. txmsrp, rxmsrp stats added
+2. rtp header extension for audio / video is supported
+3. When more than 1 test suite present, test status was not showing "Completed" after test over. Fixed now.
+4. Average file graph suppported
+5. Controller was crashing during exit due to null pointer in keepalive module. It is fixed now.
+6. License mac check commented as we found mac changing frequently in Ingate test setup.
+7. More logs added for license failure.
+8. Media stats for jitter, packet counts, delays etc are supported through filegraphs
+
+Enhancement frontend
+1. Start Test (in LM Helper) is now a button instead of link
+2. LM Helper module new scenarios added
+3. User guide updated with new images
+4. User guide for server module added
+
+Bug Fixes / Enhancements - 4.02 rc2
+---------------------------------------------------------------
+Enhancement backend
+1. File based graphs introduced for b2b
+2. File based graphs introduced for server
+3. Turn ipv6 support done 
+
+Enhancement frontend
+1. LMHelper module, more scenario support added. Now almost all modules except server has automaic scenario generation support.
+2. Permissions in controller module simplified
+3. Filegraph support added in controller module
+4. When test is on, do not allow TB modification
+5. Before test start check for configured capacity at right place.
+6. Link for dynamic graph removed from summary table
+7. Link for file graphs added in summary table
+8. Lmflot module introduced for graph drawing using flot opensource  
+
+Bug fix
+1. Controller bug. When multiplier and controller disconnects (network issue), then test was starting from create instance. Now it will start from where last it was left.
+2. Queued packets addrinfo free was not proper, leading to memory leaks. Fixed now.
+
+
+====================================================================================================================
+
+
+
+Bug Fixes / Enhancements - 4.02 rc1
+---------------------------------------------------------------
+This release has lot of new features and bug fixes
+
+
+I have updated trial setup with new web code and executables. It has number of new features.
+
+Back end
+---------------------
+1. Server.so - It is same as b2ba.so but syntax is simple and easy to work
+   For syntax details please check trail setup lm user testbed sip-call-video-rtp-udp server test suite. It just goes in a flow.
+
+2. Recorder
+   HTTP messages starts with hmsg_ and websocket messages starts with wmsg_ prefix.
+
+3. Recorder, for binary messages prints both hex dump as well as readable characters (if in ascii range)
+
+4. Timer fix
+   If a timer with higher value is started, max int range error was causing other timers not to expire. It is fixed now.
+
+
+Front end
+---------------------
+Changes are too many. Listing only important ones.
+
+1. LM Helper [some are done, and some are inprogress, some are not started]
+2. Summary table look and feel changed
+3. Restart option is given in summary table
+4. Navigation. From summary table -> test bed -> test suite. This avoids manually finding the right test bed and test suites.
+5. Test bed, test suite, templates on add/edit, after add/edit operation redirects to same page.
+6. Data overlaping in summary table is fixed
+
+
+Bug Fixes / Enhancements - 4.02 rc0
+---------------------------------------------------------------
+This release has lot of new features and bug fixes
+
+1. Headless chrome support
+2. Repository stuff removed
+3. File based stats - partly implelemented
+4. New user can directly register for free trial. Account is created instantly. User can run the test without much support from support team. 
+5. LM Helper module (in front end) introduced
+6. Multiplier range (startid endid) concept removed
+7. B2BA SIP stats for all tx / rx messages supported
+8. Sending proprietary data from b2ba sip using send-data instruction
+9. Overall stats report used to be shown on basis of endpoints/virtual-users. Now if you put automation 1 in create-instance, the overall stats will be shown on basis of test cases.
+10. Upgrade a tcp conn handle to ws conn handle
+11. During TLS handshake now DNS name in certificate is used
+12. Dueing ws or wss handshake, we found with handshake respose (101 switching) some data may also come, previously it was ignored, now it is used.
+13. Now Javascript evaluation is supported. User interface is not great now. But core support to execute standard javascript engine using Chrome's V8 is supported.
+14. DNS round robin concept for fsip and fsipwebrtc is supported
+15. SIP message body with zip format (with / without multipart) is supported
+================================================================
+
+
+
+
+
+
+
+
+
+
+
+rc8 is final release for 4.01 series
+
+Bug Fixes / Enhancements - 4.01 rc8
+----------------------------------------------------------------
+1. Moving from Load Multiplier to LM Tools
+2. RTCP Mux disabled test in Turn case was failing as rtcp port set to 3479 (3478 + 1). It is fixed.  
+
+
+Bug Fixes / Enhancements - 4.01 rc7
+----------------------------------------------------------------
+1. Install / Uninstall script fix for postgresql security (making password compulsory.
+2. tx params change in etransport 
+3. Supporting multiple udp sockets in fsip and b2bsip  
+4. Few bug fixes
+
+Bug Fixes / Enhancements - 4.01 rc6
+----------------------------------------------------------------
+1. Using soft link instead of for FTP 
+
+
+Bug Fixes / Enhancements - 4.01 rc5
+----------------------------------------------------------------
+1. Security -  all communications made more secured
+
+Bug Fixes / Enhancements - 4.01 rc4
+----------------------------------------------------------------
+1. IPv6 support - fsip, media, fice, dtls
+2. Memleak fix in controller
+
+Bug Fixes / Enhancements - 4.01 rc3
+----------------------------------------------------------------
+1. IPv6 support - b2ba, apat
+
+Bug Fixes / Enhancements - 4.01 rc2
+----------------------------------------------------------------
+1. [p-epid] is changed to [p-onstart-epid]
+2. [p-remote-epid] is changed to [p-onstart-remote-epid]
+3. Supported new instruction import-variables (same as set-variables)
+4. Supported new instruction export-variables (opposite to set-variables)
+5. Supported new instruction import-ep-variables (same as set-ep-variables)
+6. Supported new instruction export-ep-variables (opposite to set-ep-variables) 
+
+7. session-deinit was disabled in last few builds. It is enabled now.
+Note - Now internally sessions are not destrpyed after send / recv of bye response
+In register-200, unregister-200, bye, by2-200 we must put session-deinit
+In any negative case, internally session is deleted
+Hopefully with this, we can reduce memory leaks.
+
+8. In WS handshake, if GET message comes without mandatory header, 101 response not sent. It was leading to crash if mandatory headers not present in received GET message.
+
+9. Sibling logs can be downloaded as a zip file
+10. Test report / error report are written in simple way (speed improvement). Graphs are missing in PDF file. Excel download removed.
+
+
+
+
+Bug Fixes / Enhancements - 4.01 rc1
+----------------------------------------------------------------
+Features
+-----------
+1. B2BA sip, some test case instructions were not executed. Fixed this issue in this build.
+2. B2BA sip resource usage is logged into log file
+3. In b2ba sip b2ba_execute_sip_session api, SP name in log_data wascrash as SP gets freed. Now SP name copied to local variable and then used in log_data.
+4. transport_tls_connect is supported in etransport
+
+Bug Fixes
+-----------
+1. In testbed, for sequential execution running the test with different endpoints / threads for test suite was not supported. In 4.01-rc1 it is is supported.
+2. B2BA sip stability issues are fixed. Major one was timer fix. Check stop_the_timer api.
+3. While retrieving audio-rtp-ufrag pligin var (b2ba sip) and similar cases, sdp session null check was missing. It was crashing the system randomly.
+4. B2BA sip, on conn check failure return immediately and start session delete process.
+5. Controller was exiting without checking if all TS are done or not. Now it will wait till all TS are done or on interrupt (control + c)
+6. Set all remote candidate now returns fail if failed to set.
+7. fsip / fsipwebrtc, retransmit, only if transaction is request (non-invite case)
+8. avoid sending fail notification to app for fsip if buf is null during rtx operation
+9. Overall cmd timer stopeed as part of mstrans. Mem leak fix.
+
+Bug Fixes / Enhancements - 4.01 rc0
+----------------------------------------------------------------
+Features
+----------------------------------
+1. On syntax support in apat
+2. Increment support in apat
+3. In sequential execution, support endpoint process counts as configured per test suite
+4. Test suite GUI changed from drupal form to Javascript based form
+5. Test template GUI changed from drupal form to Javascript based form
+6. Now ICE and wait timer async operations not allowed to execute from secondary session
+7. Supporting tel url in sip from / to.
+8. ICE channel refresh support
+
+Bugs Fixed
+--------------------------
+1. Immediate instruction after asyn instruction is not executed. 
+2. After session deinit, session becomes and then crash
+3. If socket close received from see, session conn was not set to null, leading to crash
+4. If dtls parmas null, while sending dtls close alert it gets null pointer exception
+5. FSIP messae on send fail, dumps memory leak.
+6. FSIP invoke case, function is evaluated before execution. And during execution one more evaluation, so total two times the function was executed. Now function evaluation before execution is stopped. 
+7. JForwarder code cleanup
+8. JSON proxy certificat files used to read from current dir. Fixed to read from device 0 dir.
+9. DTMF as it comes, we give it to user. This may break DTMF working with asterisk. Need to revisit. It is done to support generic dtmf for proprietary testing.
+
+10. When rtcp mux disabled, ice conn check for rtcp channel was failing
+11. MF media - Packet reordering disabled as we found for long duration calls, mfmedia was not able to generate media output file. Need revisit.
+12. Private pipe reset fix
+13. Delete string variable, if not found in current list, is not deleted from associate list
+14. Controller testbed special char in testbed name is allowed.
+
+Bug Fixes / Enhancements - 4.00 rc11
+----------------------------------------------------------------
+1. KA issue fix in sequential run
+2. Current stats test suite name was showing same always. Fixed it.
+3. Media device files sowing properly in sequential run
+
+
+Bug Fixes / Enhancements - 4.00 rc10
+----------------------------------------------------------------
+1. Sequential execution in testbed is supported. Controller and TB frontend is modified to great extent.
+2. If Report is disabled in test case, its report would not show up in details report
+
+
+Bug Fixes / Enhancements - 4.00 rc9
+----------------------------------------------------------------
+1. B2BA SIP modified to great extent, supported media in b2ba.
+2. RTX issue in fsip is fixed (Inv 200 OK RTX starts after 36 sec)
+
+
+Bug Fixes / Enhancements - 4.00 rc8
+----------------------------------------------------------------
+1. Supporting invoke script command in fsip and apat
+2. Supporting invoke set command in fsip and apat
+3. Supporting file upload by apat curl
+4. Partial code for audio to video stepup 
+
+Bug Fixes / Enhancements - 4.00 rc7
+----------------------------------------------------------------
+Display multiple device file properly in webpage.
+User guide updated for B2BA.
+Lmexample module code is modfied to create test suite and template from examples.
+Lm examples added w.r.t. new database schema.
+Generate the template directory properly for B2BA plugin when you start the test.
+
+Bug Fixes / Enhancements - 4.00 rc6
+----------------------------------------------------------------
+Got all the new features from b2ba to ubuntu 18 version like error reporting in b2ba sip, inline inst execution, udp send in b2ba apat (fix) plus few more. Updated front end with freelm source and db.
+
+Bug Fixes / Enhancements - 4.00 rc4
+----------------------------------------------------------------
+Support on syntax in fsip
+DB cleaned up
+
+Bug Fixes / Enhancements - 4.00 rc3
+----------------------------------------------------------------
+In Admin menu, user configuration for total enndponts, threads and maximum time duraion for a testbed.
+The log and device file will show according to multiplier. If more files are present then multiple link will show in bottom of the table.
+Templates are written to files and multiplier is loading from test home dir.
+
+Bug Fixes / Enhancements - 4.00 rc2
+----------------------------------------------------------------
+Merged from Ubuntu 14 system. It has bug fixes and enhancements done for Mavenir in between.
+Also UDP retransmission fix is done with new approach, now rtx message does not route through rx-list, it is processed instantly on receive.
+
+Bug Fixes / Enhancements - 4.00 rc1
+----------------------------------------------------------------
+Ubuntu 18.04 LTS support
+
+
+Bug Fixes / Enhancements - 3.03 rc5
+----------------------------------------------------------------
+1. B2BA post support
+2. File save that comes in chunk in post message
+
+Bug Fixes / Enhancements - 3.03 rc4
+----------------------------------------------------------------
+1. B2BA bug fixes
+2. Supporting client side body support in HTTP requests
+
+Bug Fixes / Enhancements - 3.03 rc3
+----------------------------------------------------------------
+1. Introducing B2BA plugin 
+
+Bug Fixes / Enhancements - 3.03 rc2
+----------------------------------------------------------------
+1. multiplier.sh file permission changed to 777
+2. css and code contained inline-grid, which is not supported in older versions. changed it to inline-block.
+3. in-vp8.mlt is trimmed (last two packets dropped), as when video winds up, for some duration video was shown disordered. with trim of two packets from last this issue is resolved.
+4. admindb stuff deleted from settings.php
+5. styleguide dependcy removed
+6. home page is modified as per lm main home page
+7. logindestination module is installed and emabled
+
+
+Bug Fixes / Enhancements - 3.03 rc1
+----------------------------------------------------------------
+1. Video extension mlt bug fixes
+
+Bug Fixes / Enhancements - 3.03 rc0
+----------------------------------------------------------------
+1. Video extension mlt supported. With that video works smooth now.
+2. Front end changes for easy access of repo, cntl, mlt, ts & tb.
+
+
+Bug Fixes / Enhancements - 3.02 Release
+----------------------------------------------------------------
+1. Built in release mode
+
+Bug Fixes / Enhancements - 3.02-rc8-beta
+----------------------------------------------------------------
+1. Multi session support - Endpoints can create more than one sessions and execute in corresponding session contexts.
+2. Invoke wait / notify support - Synchronization between sessions in an endpoint context.
+3. Url timeout support in milliseconds
+4. Url connect timeout support in milliseconds 
+5. Media files are generated with session-id name
+6. Endpoint status (none / resource / details) - It helps to know resouce consumed, also which endpoint did not return from current command execution.
+
+
+Bug Fixes / Enhancements - 3.02-rc7-beta
+----------------------------------------------------------------
+1. Timeouts in plugins used follow to larger path (recall mechanism). Now self posting mechanism is used and it helps to avoid LIFO result pattern for successive test case rounds.
+2. Opus support for stereo file and bug fix for buffer overflow
+3. Controller transport length callback set to NULL
+4. Graph point size set to 0, so that graph looks prominent even for long duration tests
+
+
+Bug Fixes / Enhancements - 3.02-rc6-beta
+----------------------------------------------------------------
+1. Multiple multiplier parallel execution case, online license verification was failing. It is fixed now.
+2. Log in multiplier is set after child creation. In this release we pulled up it bit early (before license verification). If anything goes wrong in license verification, it will log the details. It is not a bug.
+3. DB corruption in front end modules. Typically in test history, the result details should not be downloaded from controller. However it was getting downloaded, and it was corrupting old test result data with current test result data. It is fixed now.   
+4. In summary table, multiple multiplier execution rows were shown in random manner. Now it is shown after sorting. So user can see rows in a particular pattern throughout.
+
+Bug Fixes - 3.02-rc5-beta
+----------------------------------------------------------------
+1. SIP Route header fix 
+
+
+Bug Fixes - 3.02-rc4-beta
+----------------------------------------------------------------
+1. Error info in multiplier transaction was not reset. When test case repeat is there, same error goes to controller for every single repat complete, and errors written by controller was much more than actual number of errors. Now it is fixed.
+
+2. Some log errors (spell correction) are modified
+
+3. config-sdp test cases are cleanup in default db 
+
+
+Bug Fixes - 3.02-rc3-beta
+----------------------------------------------------------------
+1. HTTP RX/TX bytes stats were not getting updated, for that user need to enable url log specifcally. It is fixed now, always url log is enabled. Depending on log level, message will be logged in log file. But stats data will always be available.
+
+2. Sometimes if log is enabled for url, response received was incomplete hence test case was failing. It is fixed now.
+
+3. Stats logs are switched off
+
+4. Stats log level is changed to warning (from error). When stats log enabled, instead of error logs, warning logs will be shown on duplicate stats updates.
+
+5. Tls transport log changed from error to warning
+
+
+Bug Fixes - 3.02-rc2-beta
+----------------------------------------------------------------
+1. DB corrections are done for sample examples.
+2. Explicit & Implicit stats tables are reset
+
+New Enhancements / Features (3.02-rc1-beta)
+----------------------------------------------------------------
+1. Graphs for calls (both for apat & sip)
+2. Graphs for sip invite transactions 
+3. Graphs for sip non-invite transactions 
+4. Graphs for sip dialogs 
+
+New Enhancements / Features (3.01)
+----------------------------------------------------------------
+1. Enhancements to .CSV file support for dynamic data input capabilities.
+2. UDP retransmission enhancements.
+3. The audio / video bundle support for FlexiSIP.
+4. Upgrade of the script evaluation engine.
+5. Per websocket connection based template supported.
+
+6. Graphs phase II
+   a) The support for both the Dynamic as well as the Static Graph/s for all the modules. The user can choose which field/s are to be rendered/displayed.
+   b) The support for Summary Graphs in the result dashboard page itself.
+
+7.Multi-receive and special lua function call on receiving a matching message. With multi-receive support, users can configure Load Multiplier, to receive and process out of order / sequence messages as well.
+
+
+Note
+----------------------------------------------------------------
+2.x users may upgrade to 3.x. Templates need to be modified. In templates path, run unix2dos command if \r\n are required at line ends.
+Also for receive templates, if at the end of template you have wildcard pattern [...] and then \r or \n, please remove \r and \n. By default multiplier removes last \n char from template file.  
+
+
+Installation
+----------------------------------------------------------------
+Download. Untar. Change directory. You can see install.pl file. You need to run install.pl file like ./install.pl. It will ask very minimal input like m/c static ip address, m/c login user name. With this installer installs entire multiplier suite within 10 minutes.
+
+H/w & OS requirement
+----------------------------------------------------------------
+1) Ubuntu 14.04.5 LTS 64bit - http://releases.ubuntu.com/14.04/ubuntu-14.04.5-desktop-amd64.iso
+2) 4 GB RAM
+3) During installation, m/c should have internet connectivity
+
+After installation, you can follow user guide, examples online to work with multiplier tool.
+Alternatively you can write to info@loadmultiplier.com for any support on multiplier.
+
+Important links
+----------------------------------------------------------------
+User manual - https://loadmultiplier.com/node/140
+Quick user guide - https://loadmultiplier.com/node/199
+FAQ - https://loadmultiplier.com/node/245
+Installation - https://loadmultiplier.com/node/179
+Privacy - https://loadmultiplier.com/node/164
+Terms & conditions - https://loadmultiplier.com/node/165

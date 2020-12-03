@@ -1,0 +1,5 @@
+#!/usr/bin/expect -f
+spawn cpan install String::Util
+expect "*automatically*"
+send -- "yes\r"
+expect eof
